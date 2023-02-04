@@ -4,7 +4,12 @@ import { Command } from 'commander/esm.mjs';
 const program = new Command();
 
 program
-    .option('-h, --help', 'display help for command');
+    .helpOption('-h, --help', 'display help for command')
+    .version('0.8.0');
+    
 
 program.parse();
     
+
+console.log('1');
+
