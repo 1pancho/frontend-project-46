@@ -32,6 +32,6 @@ const genDiff = (filepath1, filepath2) => {
     return genDiffFn;
 }
    
-export default { genDiff };
+export default genDiff;
 
 
