@@ -6,14 +6,14 @@ import genDiff from '../src/index.js';
 const program = new Command();
 
 program
-    .helpOption('-h, --help', 'display help for command')
-    .version('0.8.0')
-    .description('Compares two configuration files and shows a difference.')
-    .argument('<filepath1>')
-    .argument('<filepath2>')
-    .option()
-    .action((filepath1, filepath2) => {'-f, --format <type>', 'output format'
-        console.log(genDiff(filepath1,filepath2));
-    });
+  .helpOption('-h, --help', 'display help for command')
+  .version('0.8.0')
+  .description('Compares two configuration files and shows a difference.')
+  .argument('<filepath1>')
+  .argument('<filepath2>')
+  .option('-f, --format <type>', 'output format')
+  .action((filepath1, filepath2) => {
+    console.log(genDiff(filepath1, filepath2));
+  });
 
 program.parse(process.argv);

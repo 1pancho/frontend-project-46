@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { readFileSync } from 'fs';
 import _ from 'lodash';
 
@@ -27,4 +28,4 @@ const genDiff = (filepath1, filepath2) => {
   return genDiffFn(dataParse1, dataParse2);
 };
 
-export default genDiff;
+export { genDiff };
