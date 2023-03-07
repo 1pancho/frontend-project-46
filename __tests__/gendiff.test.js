@@ -1,7 +1,5 @@
-import genDiff from '../src/index.js';
-import { readFileSync } from 'fs';
 
-const __filename = fileURLToPath(import.meta.url); //import.meta содержит метаданные js модуля, такие как, например, базовый URL модуля. Т.о. мы можем понять где этот модуль лежит. Если мы запускаем запускаем, например, тест на локальном компьютере, то в этом import.meta.url будет храниться фактически путь до этого файла на компьютере (например, какой-то такой: file:///dirname/module.test.js)
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
@@ -29,3 +27,4 @@ test('unknown format', () => {
     genDiff(filepath1, filepath2, 'txt');
   }).toThrow(error);
 });
+
