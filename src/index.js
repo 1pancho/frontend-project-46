@@ -28,4 +28,4 @@ const genDiff = (filepath1, filepath2) => {
   return genDiffFn(dataParse1, dataParse2);
 };
 
-export { genDiff };
+export default genDiff;
