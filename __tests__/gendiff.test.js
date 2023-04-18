@@ -1,25 +1,24 @@
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path, { dirname } from 'path';
-import genDiff from '../src/index.js';
+import genDiff from '../src/index';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) => path.join('__fixtures__', filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-
 const expectedStylishFormat = readFile('resultJsonFile.txt').trim();
 
 test('check json stylish format', () => {
-  const actual = genDiff(getFixturePath('filepath1.json'), getFixturePath('filepath2.json'), 'stylish');
+  const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
   expect(actual).toEqual(expectedStylishFormat);
 });
 
 test('check plain format', () => {
   const sourceData = genDiff('resultJsonFile.txt');
   const expected = sourceData.trim();
-  const actual = genDiff(getFixturePath('filepath.json'), getFixturePath('filepath.json'), 'stylish');
+  const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
   expect(actual).toEqual(expected);
 });
 
@@ -31,4 +30,3 @@ test('unknown format', () => {
     genDiff(filepath1, filepath2, 'txt');
   }).toThrow(error);
 });
-
