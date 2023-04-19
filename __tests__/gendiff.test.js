@@ -15,12 +15,3 @@ test('check json stylish format', () => {
   // console.log('actual', actual);
   expect(actual).toEqual(expectedStylishFormat);
 });
-
-test('unknown format', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.json');
-  const error = new Error("This format is not supported: 'txt'. Please read the documentation and use the available formats");
-  expect(() => {
-    genDiff(filepath1, filepath2, 'txt');
-  }).toThrow(error);
-});

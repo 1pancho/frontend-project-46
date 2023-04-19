@@ -1,8 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import fs from 'fs';
 import path from 'path';
-import _ from 'lodash';
-import buildTree from './buildTree.js'
+import buildTree from './buildTree.js';
 
 const getAbsolutPath = (filepath) => path.resolve(process.cwd(), filepath);
 const readFile = (filepath) => fs.readFileSync(getAbsolutPath(filepath), 'utf-8');
