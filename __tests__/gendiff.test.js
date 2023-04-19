@@ -11,7 +11,8 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 const expectedStylishFormat = readFile('resultJsonFile.txt').trim();
 
 test('check json stylish format', () => {
-  const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
+  const actual = genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'stylish');
+  // console.log('actual', actual);
   expect(actual).toEqual(expectedStylishFormat);
 });
 
