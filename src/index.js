@@ -30,7 +30,7 @@ const genDiff = (file1, file2) => {
     return string;
   };
 
-  return executeTypeValue(treeOfObjects);
+  return `{\n${executeTypeValue(treeOfObjects)}\n}`;
 };
 
 export default genDiff;

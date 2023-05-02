@@ -15,3 +15,9 @@ test('check json stylish format', () => {
   // console.log('actual', actual);
   expect(actual).toEqual(expectedStylishFormat);
 });
+
+test('check json stylish format', () => {
+  const actual = genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml', 'stylish');
+  // console.log('actual', actual);
+  expect(actual).toEqual(expectedStylishFormat);
+});
