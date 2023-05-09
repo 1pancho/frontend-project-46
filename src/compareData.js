@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const buildTree = (obj1, obj2) => {
+const compareData = (obj1, obj2) => {
   const keysOfObj1 = _.keys(obj1);
   const keysOfObj2 = _.keys(obj2);
   const sortedKeys = _.sortBy(_.union(keysOfObj1, keysOfObj2));
@@ -45,4 +45,4 @@ const buildTree = (obj1, obj2) => {
   return result;
 };
 
-export default buildTree;
+export default compareData;
