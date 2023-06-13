@@ -58,4 +58,4 @@ const stylish = (data) => {
 // Для узла типа 'recursion' 
 
 
-export { stylish, stringify };
+export default stylish;

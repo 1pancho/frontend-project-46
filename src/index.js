@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import compareData from './compareData.js';
 import parse from './parser.js';
-import { stylish } from './stylish.js';
+import stylish from './stylish.js';
 
 const getAbsolutPath = (filepath) => path.resolve(process.cwd(), filepath);
 const readFile = (filepath) => fs.readFileSync(getAbsolutPath(filepath), 'utf-8');
