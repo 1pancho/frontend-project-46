@@ -20,9 +20,6 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
   return iter(value, 1);
 };
 
-
-
-
 const stylish = (data) => {
     const iter = (tree, depth) => tree.map((node) => {
         switch (node.type) {
@@ -60,6 +57,4 @@ const stylish = (data) => {
 // Для узла типа 'recursion' 
 
 
-
-
-export {stylish, stringify};
+export { stylish, stringify };
