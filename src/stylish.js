@@ -20,6 +20,12 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
   return iter(value, 1);
 };
 
+
+const makeIndent = (depth) => {
+	const str = " ";
+	return str.repeat(depth * 4 - 2);
+};
+
 const stylish = (data) => {
     const iter = (tree, depth) => tree.map((node) => {
         switch (node.type) {
@@ -28,20 +34,20 @@ const stylish = (data) => {
                     node.value,
                     depth,
                 )}\n`;
-            case 'remove':
+            case 'deleted':
               return `${currentIndent(depth)}- ${node.key}: ${stringify(
                   node.value,
                   depth,
                 )}\n`;
-            case 'same':
+            case 'unchanged':
               return `${currentIndent(depth)} ${node.key}: ${stringify(
                 node.value,
                 depth,
               )}\n`;
-            case 'updated':
+            case 'changed':
               return `${currentIndent(depth)}- ${node.key}: ${stringify(node.valueBefore, depth)}\n+ ${node.key}: ${stringify(node.valueAfter, depth)}\n`;
-            case 'recursion':
-              return `${makeIndent(depth)}  ${value.key}: {\n${value.children
+            case 'nested':
+              return `${makeIndent(depth)}  ${node.key}: {\n${node.children
                 .map((val) => stylish(val, depth + 1))
                 .join("\n")}\n ${makeIndent(depth)} }`;
             default:

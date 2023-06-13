@@ -15,6 +15,7 @@ const genDiff = (file1, file2) => {
   const parsed1 = parse(data1, getFormat(file1));
   const parsed2 = parse(data2, getFormat(file2));
   const data = compareData(parsed1, parsed2);
+  console.log(data);
   const newData = stylish(data);
 
   return newData;

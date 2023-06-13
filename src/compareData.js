@@ -10,7 +10,7 @@ const compareData = (obj1, obj2) => {
       return {
         key,
         value: obj2[key],
-        type: 'added',
+        type: 'add',
       };
     }
     if (!_.has(obj2, key)) {
