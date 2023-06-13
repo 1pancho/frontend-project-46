@@ -45,9 +45,10 @@ const stylish = (data) => {
                 .map((val) => stylish(val, depth + 1))
                 .join("\n")}\n ${makeIndent(depth)} }`;
             default:
-              throw new Error(`Unknown type: ${value.type}`);
+              throw new Error(`Unknown type: ${node.type}`);
           }
         })
+        return `{\n${iter(data, 1).join('')}}`
       }
                     
 //                 'add' формируется строка добавления свойства.
