@@ -8,22 +8,26 @@ const stringify = (value) => {
 };
 
 const plain = (data) => {
-    const iter = (node) => {
+    const iter = (tree, parent = '') => tree.map((node) => {
+    const path = parent ? `${parent}.${node.key}` : node.key;
     switch (node.type) {
         case 'add':
-            return `Property ${node.key} was added with value: ${node.value}`;
+          return `Property ${path} was added with value: ${stringify(node.value)}`;
         case 'deleted':
-            return `Property ${node.key} was removed`;
+          return `Property ${path} was removed`;
         case 'unchanged':
-            return `Property ${node.key} was unchanged`;
+          return `Property ${path} was unchanged`;
         case 'changed':
-            return `Property ${node.key} was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`;
+          return `Property ${path} was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`;
         case 'nested':
-            return `Property ${node.children} was updated. From ${iter(stringify(node.valueBefore))} to ${iter(stringify(node.valueAfter))}`
+          if (node.valueBefore) {
+            return `${'\n'}${path}\\n${iter(node.children, path).join('\n')}`;
+          }
+          return `${iter(node.children, path).join('\n')}`;
         default:
           throw new Error(`Unknown type: ${node.type}`);
-    }
-    }
+      }
+})
     return `{\n${iter(data).join('')}}`
 };
 
