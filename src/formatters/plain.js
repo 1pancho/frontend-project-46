@@ -8,27 +8,34 @@ const stringify = (value) => {
 };
 
 const plain = (data) => {
-    const iter = (tree, parent = '') => tree.map((node) => {
+  const iter = (tree, parent = '') => {
+  const lines = [];
+  tree.forEach((node) => {
     const path = parent ? `${parent}.${node.key}` : node.key;
     switch (node.type) {
-        case 'add':
-          return `Property ${path} was added with value: ${stringify(node.value)}`;
-        case 'deleted':
-          return `Property ${path} was removed`;
-        case 'unchanged':
-          return `Property ${path} was unchanged`;
-        case 'changed':
-          return `Property ${path} was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`;
-        case 'nested':
-          if (node.valueBefore) {
-            return `${'\n'}${path}\\n${iter(node.children, path).join('\n')}`;
-          }
-          return `${iter(node.children, path).join('\n')}`;
-        default:
-          throw new Error(`Unknown type: ${node.type}`);
-      }
-})
-    return `{\n${iter(data).join('')}}`
+      case 'add':
+        lines.push(`Property '${path}' was added with value: ${stringify(node.value)}`);
+        break;
+      case 'deleted':
+        lines.push(`Property '${path}' was removed`);
+        break;
+      case 'unchanged':
+        lines.push(`Property '${path}' was unchanged`);
+        break;
+      case 'changed':
+        lines.push(`Property '${path}' was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`);
+        break;
+      case 'nested':
+        lines.push(...iter(node.children, path));
+        break;
+      default:
+        throw new Error(`Unknown type: ${node.type}`);
+    }
+  });
+  return lines;
+};
+
+return iter(data).join('\n');
 };
 
 export default plain;
