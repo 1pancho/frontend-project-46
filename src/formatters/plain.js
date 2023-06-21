@@ -1,14 +1,14 @@
 import _ from 'lodash';
 
 const stringify = (value) => {
-    if (_.isObject(value)) {
-        return '[complex value]';
-    }
-    return typeof value === 'string' ? `'${value}'` : value;
+  if (_.isObject(value)) {
+    return '[complex value]';
+  }
+  return typeof value === 'string' ? `'${value}'` : value;
 };
 
 const plain = (data, parent = '') => {
-  const lines = data.flatMap(node => {
+  const lines = data.flatMap((node) => {
     const path = parent ? `${parent}.${node.key}` : node.key;
     switch (node.type) {
       case 'added':

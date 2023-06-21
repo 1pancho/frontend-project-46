@@ -10,6 +10,6 @@ const parse = (data, extension) => {
     default:
       return (`${extension} is not supported`);
   }
-}
+};
 
 export default parse;

@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import compareData from './compareData.js';
 import parse from './parser.js';
-import stylish from './formatters/stylish.js';
 import format from './formatters/index.js';
 
 const getAbsolutPath = (filepath) => path.resolve(process.cwd(), filepath);

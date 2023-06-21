@@ -12,7 +12,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format')
-  .action((filepath1, filepath2, formatName) => {
+  .action((filepath1, filepath2, formatName) => { /* eslint-disable no-console */
     console.log(genDiff(filepath1, filepath2, formatName.format));
   });
 
