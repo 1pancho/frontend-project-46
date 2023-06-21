@@ -29,5 +29,5 @@ test('check plain format', () => {
 test('check json plain format', () => {
   const actual = genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'json');
   // console.log('actual', actual);
-  expect(actual).toEqual(JSON.stringify(expectedJsonStylishFormat));
+  expect(actual).toEqual(expectedJsonStylishFormat);
 });
