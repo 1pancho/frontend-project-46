@@ -25,23 +25,25 @@ const makeIndent = (depth) => {
 const stylish = (data) => {
     const iter = (tree, depth) => tree.map((node) => {
         switch (node.type) {
-            case 'add':
+            case 'added':
                 return `${makeIndent(depth)}+ ${node.key}: ${stringify(
                     node.value,
                     depth,
-                )}\n`;
+                )}`;
             case 'deleted':
               return `${makeIndent(depth)}- ${node.key}: ${stringify(
                   node.value,
                   depth,
-                )}\n`;
+                )}`;
             case 'unchanged':
-              return `${makeIndent(depth)} ${node.key}: ${stringify(
+              return `${makeIndent(depth)}  ${node.key}: ${stringify(
                 node.value,
                 depth,
-              )}\n`;
+              )}`;
             case 'changed':
-              return `${makeIndent(depth)}- ${node.key}: ${stringify(node.valueBefore, depth)}\n+ ${node.key}: ${stringify(node.valueAfter, depth)}\n`;
+              return `${makeIndent(depth)}- ${
+                node.key
+              }: ${stringify(node.valueBefore, depth)}\n${makeIndent(depth)}+ ${node.key}: ${stringify(node.valueAfter, depth)}`;
             case 'nested':
               return `${makeIndent(depth)}  ${node.key}: {\n${iter(
                 node.children,
@@ -51,14 +53,7 @@ const stylish = (data) => {
               throw new Error(`Unknown type: ${node.type}`);
         }
       })
-  return `{\n${iter(data, 1).join('')}}`
-}
-                    
-//                 'add' формируется строка добавления свойства.
-// Для узла типа 'remove' формируется строка удаления свойства.
-// Для узла типа 'same' формируется строка неизмененного свойства.
-// Для узла типа 'updated' формируется строка измененного свойства, которое содержит и старое и новое значения.
-// Для узла типа 'recursion' 
-
+  return `{\n${iter(data, 1).join('\n')}\n}`
+};
 
 export default stylish;

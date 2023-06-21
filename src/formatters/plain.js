@@ -7,35 +7,25 @@ const stringify = (value) => {
     return typeof value === 'string' ? `'${value}'` : value;
 };
 
-const plain = (data) => {
-  const iter = (tree, parent = '') => {
-  const lines = [];
-  tree.forEach((node) => {
+const plain = (data, parent = '') => {
+  const lines = data.flatMap(node => {
     const path = parent ? `${parent}.${node.key}` : node.key;
     switch (node.type) {
-      case 'add':
-        lines.push(`Property '${path}' was added with value: ${stringify(node.value)}`);
-        break;
+      case 'added':
+        return `Property '${path}' was added with value: ${stringify(node.value)}`;
       case 'deleted':
-        lines.push(`Property '${path}' was removed`);
-        break;
+        return `Property '${path}' was removed`;
       case 'unchanged':
-        lines.push(`Property '${path}' was unchanged`);
-        break;
+        return null;
       case 'changed':
-        lines.push(`Property '${path}' was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`);
-        break;
+        return `Property '${path}' was updated. From ${stringify(node.valueBefore)} to ${stringify(node.valueAfter)}`;
       case 'nested':
-        lines.push(...iter(node.children, path));
-        break;
+        return plain(node.children, path);
       default:
         throw new Error(`Unknown type: ${node.type}`);
     }
   });
-  return lines;
-};
-
-return iter(data).join('\n');
+  return lines.filter(Boolean).join('\n');
 };
 
 export default plain;
