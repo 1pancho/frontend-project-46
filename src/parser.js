@@ -8,7 +8,7 @@ const parse = (data, extension) => {
     case 'yaml':
       return yaml.load(data);
     default:
-      return (`${extension} is not supported`);
+      throw new Error(`${extension} is not supported`);
   }
 };
 

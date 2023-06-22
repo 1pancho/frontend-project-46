@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/1pancho/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/1pancho/frontend-project-46/actions)",
+  "description": "Программа сравнивает два конфигурационных файла JSON, либо YAML в трех различных форматаха форматах и показывает разницу между ними",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
