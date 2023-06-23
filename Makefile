@@ -7,8 +7,5 @@ test-coverage:
 install:
 	npm install
 
-install-deps:
-	npm ci
-
 publish:
 	npm publish
