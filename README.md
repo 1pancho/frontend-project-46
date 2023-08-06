@@ -20,24 +20,37 @@
 
 
 ## Полезные команды
+---
 
 #### Помощь
+
 gendiff -h
 
-### Сравнение без выбора формата (по умолчанию stylish):
+
+#### Сравнение без выбора формата (по умолчанию stylish):
+
 gendiff file1.json file2.yml
 
-### Сравнение файлов с выбором формата:
+
+#### Сравнение файлов с выбором формата:
+
 gendiff -f formatName file1.json file2.yml
 
+  
 
 ### Демонстрация запуска работы утилиты:
-### Сравнение без выбора формата (по умолчанию stylish)
+---
+
+#### Сравнение без выбора формата (по умолчанию stylish)
+
 https://asciinema.org/a/BqS2LC6rDb8rnrB6BF8eUwOjT
 
-### Сравнение с форматом plain
+
+#### Сравнение с форматом plain
+
 https://asciinema.org/a/Sp3PiRz4e0NawBiDzpIvTyYTR
 
-### Сравнение с форматом json
-https://asciinema.org/a/FsxB5iMRUQbmOGHMDSlknLMAP
 
+#### Сравнение с форматом json
+
+https://asciinema.org/a/FsxB5iMRUQbmOGHMDSlknLMAP
